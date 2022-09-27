@@ -1,0 +1,14 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<form id="form" >
+  <div class="buttons">
+    <div class="upload-button">
+      <div class="label">Upload Html File!</div>
+      <input id="files" name="files" type="file" size="1" accept=".html"  multiple onchange="uploadFiles('files');" />
+    </div>
+  </div>
+</form>
+<div id="progress" class="progress"><div id="bar" class="bar"></div><div id="label" class="label">0%</div></div>

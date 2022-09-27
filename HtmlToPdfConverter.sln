@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfConverter.Api", "src\HtmlToPdfConverter.Api\HtmlToPdfConverter.Api.csproj", "{BCC6C8F9-EEF2-4206-9A3F-D3619552D749}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfConverter.Service.Impl", "src\HtmlToPdfConverter.Service.Impl\HtmlToPdfConverter.Service.Impl.csproj", "{F8ADC4E3-B6DD-49F0-8909-BF93B1731EA3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfConverter.Service.Abstraction", "src\HtmlToPdfConverter.Service.Abstraction\HtmlToPdfConverter.Service.Abstraction.csproj", "{08E1CE3E-B7A3-4A9B-9F1F-AFE829F125D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{0173EEE9-DBA2-471B-BEA3-B95275AC2CA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlToPdfConverter.Service.Model", "src\HtmlToPdfConverter.Service.Model\HtmlToPdfConverter.Service.Model.csproj", "{39ADFF6A-3ADC-497E-95A3-8F86C21E362E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{46E566E8-7FF0-4D7B-934A-DD9134D7303A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCC6C8F9-EEF2-4206-9A3F-D3619552D749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC6C8F9-EEF2-4206-9A3F-D3619552D749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC6C8F9-EEF2-4206-9A3F-D3619552D749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC6C8F9-EEF2-4206-9A3F-D3619552D749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8ADC4E3-B6DD-49F0-8909-BF93B1731EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8ADC4E3-B6DD-49F0-8909-BF93B1731EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8ADC4E3-B6DD-49F0-8909-BF93B1731EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8ADC4E3-B6DD-49F0-8909-BF93B1731EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E1CE3E-B7A3-4A9B-9F1F-AFE829F125D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E1CE3E-B7A3-4A9B-9F1F-AFE829F125D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E1CE3E-B7A3-4A9B-9F1F-AFE829F125D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E1CE3E-B7A3-4A9B-9F1F-AFE829F125D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39ADFF6A-3ADC-497E-95A3-8F86C21E362E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39ADFF6A-3ADC-497E-95A3-8F86C21E362E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39ADFF6A-3ADC-497E-95A3-8F86C21E362E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39ADFF6A-3ADC-497E-95A3-8F86C21E362E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E566E8-7FF0-4D7B-934A-DD9134D7303A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E566E8-7FF0-4D7B-934A-DD9134D7303A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E566E8-7FF0-4D7B-934A-DD9134D7303A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E566E8-7FF0-4D7B-934A-DD9134D7303A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8ADC4E3-B6DD-49F0-8909-BF93B1731EA3} = {0173EEE9-DBA2-471B-BEA3-B95275AC2CA3}
+		{08E1CE3E-B7A3-4A9B-9F1F-AFE829F125D1} = {0173EEE9-DBA2-471B-BEA3-B95275AC2CA3}
+		{39ADFF6A-3ADC-497E-95A3-8F86C21E362E} = {0173EEE9-DBA2-471B-BEA3-B95275AC2CA3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B41D485D-7C11-48ED-B924-190D82C2A663}
+	EndGlobalSection
+EndGlobal
