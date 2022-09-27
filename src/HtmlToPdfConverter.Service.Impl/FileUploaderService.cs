@@ -13,7 +13,6 @@ public class FileUploaderService : IFileUploaderService
     private readonly IWebHostEnvironment hostingEnvironment;
     private readonly IConfiguration configuration;
 
-
     public FileUploaderService(IWebHostEnvironment hostingEnvironment,
         IConfiguration configuration)
     {
@@ -70,41 +69,33 @@ public class FileUploaderService : IFileUploaderService
 
     private async Task<IReadOnlyCollection<string>> HTmlToPdf(IEnumerable<FileHelperModel> files)
     {
-        try
+        List<string> filePaths = new();
+
+        using var browserFetcher = new BrowserFetcher();
+        await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
+        var browser = await Puppeteer.LaunchAsync(new LaunchOptions
         {
-            List<string> filePaths = new();
+            Headless = true
+        });
+        var baseAddress = configuration["AppBaseUrl"];
+        var page = await browser.NewPageAsync();
 
-            using var browserFetcher = new BrowserFetcher();
-            await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
-            var browser = await Puppeteer.LaunchAsync(new LaunchOptions
-            {
-                Headless = true
-            });
-            var baseAddress = configuration["AppBaseUrl"];
-            var page = await browser.NewPageAsync();
-
-            foreach (var file in files)
-            {
-                await page.GoToAsync(file.FilePath);
-
-                file.FileName = file.FileName.Replace(".html", ".pdf");
-
-                var actualPath = Path.Combine(baseAddress ?? string.Empty,
-                    FilesDirectory.PdfDocumentFile, file.FileName);
-
-                var pdfFile = GetPathAndFilename(file.FileName, FilesDirectory.PdfDocumentFile);
-
-                await page.PdfAsync(pdfFile);
-                filePaths.Add(actualPath);
-            }
-
-            return filePaths;
-        }
-        catch (Exception e)
+        foreach (var file in files)
         {
-            Console.WriteLine(e);
-            throw;
+            await page.GoToAsync(file.FilePath);
+
+            file.FileName = file.FileName.Replace(".html", ".pdf");
+
+            var actualPath = Path.Combine(baseAddress ?? string.Empty,
+                FilesDirectory.PdfDocumentFile, file.FileName);
+
+            var pdfFile = GetPathAndFilename(file.FileName, FilesDirectory.PdfDocumentFile);
+
+            await page.PdfAsync(pdfFile);
+            filePaths.Add(actualPath);
         }
+
+        return filePaths;
     }
 
     private static string? EnsureCorrectFilename(string? filename)

@@ -1,5 +1,8 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using HtmlToPdfConverter.Service.Abstraction;
 using HtmlToPdfConverter.Service.Impl;
+using HtmlToPdfConverter.Service.Model;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +20,9 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddScoped<IFileUploaderService, FileUploaderService>();
 
 #endregion
+builder.Services.AddValidatorsFromAssemblyContaining<IFormFileValidator>();
 
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {

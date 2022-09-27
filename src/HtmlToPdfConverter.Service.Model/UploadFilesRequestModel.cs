@@ -2,28 +2,19 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 namespace HtmlToPdfConverter.Service.Model;
-public record UploadFilesRequestModel(IFormFile Files, string Directory = "");
-public class UploadFileRequestModelValidator : AbstractValidator<UploadFilesRequestModel>
+public class IFormFileValidator : AbstractValidator<IFormFile>
 {
-    public UploadFileRequestModelValidator()
+    public IFormFileValidator()
     {
-        RuleFor(x => x.Files)
+        RuleFor(x => x)
             .NotEmpty()
             .WithMessage(x => ExceptionThrower.RequestValidation(
-                message: ErrorMessages.IsNullOrEmpty(nameof(x.Files)), x.Files.ToString(), nameof(x.Files), -2))
-            .Must(x => x.Length < 2000000)
+                message: ErrorMessages.IsNullOrEmpty(nameof(x)), x.ToString(), nameof(x.Name), -2))
+            .Must(x => x.Length < 0)
             .WithMessage(x => ExceptionThrower.RequestValidation(
-                FileManagerErrorMessages.UploadFailedMaxSize, x.Files.ToString(), nameof(x.Files), -3))
+                FileManagerErrorMessages.UploadFailedMaxSize, x.ToString(), nameof(x.Name), -3))
             .Must(x => SupportedMimeTypes.GetMimeTypes().Contains(x.ContentType))
             .WithMessage(x => ExceptionThrower.RequestValidation(
-                FileManagerErrorMessages.UploadFailedInvalidFileType, x.Files.ToString(), nameof(x.Files), -4));
-
-        When(x => !string.IsNullOrWhiteSpace(x.Directory), () =>
-        {
-            RuleFor(x => x.Directory)
-                .Must(x => x.EndsWith('/'))
-                .WithMessage(x => ExceptionThrower.RequestValidation(
-                    message: FileManagerErrorMessages.DirectoryMustEndWithSlash, x.Directory, nameof(x.Directory), -5));
-        });
+                FileManagerErrorMessages.UploadFailedInvalidFileType, x.ToString(), nameof(x.Name), -4));
     }
 }

@@ -2,13 +2,6 @@
 {
     public static class ExceptionThrower
     {
-        public static string RequestValidation(string message, string invalidValue, string property) => throw new RequestValidationException(message, new ConstraintViolationDto()
-        {
-            InvalidValue = invalidValue,
-            Message = message,
-            Property = property
-        });
-
         public static string RequestValidation(
           string message,
           string invalidValue,
